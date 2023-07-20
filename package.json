@@ -1,0 +1,27 @@
+{
+  "name": "vitail",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "npm run tailwind:watch & nodemon server.js | browser-sync start --proxy localhost:3003 --files 'views/**/*.hbs', 'public/styles/style.css'",
+    "build": "vite build",
+    "preview": "vite preview",
+    "tailwind:css": "postcss public/styles/tailwind.css -o public/styles/style.css",
+    "tailwind:watch": "postcss public/styles/tailwind.css -o public/styles/style.css --watch"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "browser-sync": "^2.29.3",
+    "nodemon": "^3.0.1",
+    "postcss": "^8.4.26",
+    "tailwindcss": "^3.3.3",
+    "vite": "^4.4.0"
+  },
+  "dependencies": {
+    "@types/express": "^4.17.17",
+    "express": "^4.18.2",
+    "express-handlebars": "^7.0.7",
+    "ts-node": "^10.9.1"
+  }
+}

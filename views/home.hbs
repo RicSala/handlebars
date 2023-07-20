@@ -1,0 +1,101 @@
+<h1>Welcome to AILogo</h1>
+
+<h2>LOGOUT FORM</h2>
+
+{{> heading
+title="This is a custom heading"
+subtitle="This is a custom subtitle"
+type="danger"
+}}
+
+{{!-- write 5 headings like the previous using a loop with handlebars --}}
+
+<div>
+
+</div>
+
+<!-- Logout form -->
+<form id="logoutForm" action="/logout">
+    <button type="submit">Logout</button>
+</form>
+
+{{ test }} AQUI!
+
+<!-- Placeholder for the rating component -->
+<div class="text-yellow-400 bg-black cursor-pointer"> hello</div>
+{{> stars }}
+
+{{> hearButton}} HEART
+
+{{> multiSelect}}
+
+
+{{!-- <div id="test"></div> --}}
+{{!-- <div id="test2"></div> --}}
+<div id="test" class="flex cursor-pointer"></div>
+<div id="test2" class="flex cursor-pointer"></div>
+
+
+
+
+<script type="module">
+    import { addInteractivity } from '/components/rating-component.js';
+    import { toggleFavorite } from '/components/rating-component.js';
+
+    const color = 'red';
+    //addInteractivity('rating-placeholder');
+    toggleFavorite("favorite");
+
+    import { Rating } from '/components/rating-component.js';
+
+    new Rating('test', 'MyRating1', 1, 5).render();
+    new Rating('test2', 'MyRating2', 1, 5).render();
+
+
+
+
+    const options = ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5'];
+    const simpleSelect = document.getElementById('simple-select');
+    const optionTemplate = Handlebars.compile(`<div>{{value}}</div>`);
+
+    function renderOptions() {
+        // Clear the current options
+        simpleSelect.innerHTML = '';
+        console.log(options)
+        // Render each option
+        options.forEach(option => {
+            const data = { value: 'Test' }; // Pass an object with 'value' property to the template
+            const html = optionTemplate(data); // Pass the 'data' object to the template
+            console.log(html)
+            simpleSelect.innerHTML += html;
+        });
+    }
+
+    renderOptions();
+
+    simpleSelect.addEventListener('change', (e) => {
+        console.log(`Selected option: ${e.target.value}`);
+    });
+
+    console.log(Handlebars)
+
+
+
+
+    // Create a simple Handlebars template.
+    const source = `<div>{{value}}</div>`;
+
+    // Compile the template.
+    const template = Handlebars.compile(source);
+
+    // Define some data.
+    const data = {
+        value: "Test"
+    };
+
+    // Generate HTML.
+    const result = template(data);
+
+    console.log(result);  // Should print "<div>Test</div>"
+
+</script>
